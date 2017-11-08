@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> <head>
-<title>Memos</title>
+<title>Delete Memos</title>
 
   <!-- 'viewport' is used by bootstrap to respond to device size -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,12 +37,14 @@
 {% endwith %}
 
 <h1>Memos</h1>
-
+<form action="delete_memos" method="post">
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
   <div class="col-md-2">
+    <input class="form-check-input" type="checkbox" name="checkbox" value="{{ memo.index }}">
+    {{ memo.index }}
     {{ memo.date | humanize }}
   </div>
   <div class="col-md-10">
@@ -52,10 +54,10 @@
   </div> <!-- memo -->
   {% endfor %}
 {% else %}
-  <p>No memos for you. </p>  
+  <p>No memos for you. </p>
 {% endif %}
-
- 
+<button type="submit" class="btn btn-primary">delete selected</button>
+ </form>
 
 </div> <!-- container -->
 </body>
